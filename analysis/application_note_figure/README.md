@@ -1,13 +1,15 @@
 # MetaPathNet application note Figure 1 scripts
 
-This folder contains the R scripts used to generate the network and permutation panels for Figure 1 of the MetaPathNet application note.
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20139242.svg)](https://doi.org/10.5281/zenodo.20139242)
+
+This repository contains the R scripts used to generate the network and permutation panels for Figure 1 of the MetaPathNet application note.
 
 ## Requirements
 
-R >= 4.3.0
-Cytoscape >= 3.9.0 for Cytoscape-based network panels
-MetaPathNet (v0.99.0, currently under review at Bioconductor)
-R packages used by the scripts: RCy3, igraph, KEGGREST, ggplot2
+- R >= 4.3.0
+- MetaPathNet v0.99.0, currently under review at Bioconductor
+- Cytoscape >= 3.9.0 for Cytoscape-based network panels
+- R packages used by the scripts: RCy3, igraph, KEGGREST, ggplot2
 
 ## Scripts
 
@@ -35,12 +37,16 @@ Final assembly of Panels B and C was performed separately from these scripts. Th
 
 For Panel D, the permutation distribution was generated with ggplot2. Additional text labels, including the shortest-path length annotation and axis labels, were adjusted manually in Inkscape to maintain a consistent visual style across panels.
 
-The four panels were assembled into a single composed figure in Inkscape and exported as PNG (1200 DPI) and PDF.
+The four panels were assembled into a single composed figure in Inkscape and exported as PNG at 1200 DPI and as PDF.
 
 The scripts use live KEGG and MetaNetX endpoint queries through `MetaPathNet` functions. Results may therefore depend on database availability and API response at runtime.
 
+## Citation
+
+Scripts archived on Zenodo: https://doi.org/10.5281/zenodo.20139242
+
 ## Related links
 
-GitHub repository: https://github.com/zhaojie-wang/MetaPathNet
-
-Bioconductor submission (under review): https://github.com/Bioconductor/Contributions/issues/4268
+- Figure scripts repository: https://github.com/zhaojie-wang/MetaPathNet-application-note-figure
+- MetaPathNet source repository: https://github.com/zhaojie-wang/MetaPathNet
+- Bioconductor submission, under review: https://github.com/Bioconductor/Contributions/issues/4268

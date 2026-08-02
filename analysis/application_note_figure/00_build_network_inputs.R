@@ -8,7 +8,7 @@ library(MetaPathNet)
 app_organisms <- c("hsa", "eci")
 
 ## Construct the human + E. coli metabolic network
-app_network_base <- MetaPathNet::MPN_crossSpeciesNetwork(
+app_network_base <- MetaPathNet::buildCrossSpeciesNetwork(
   organism_codes = app_organisms,
   path_type      = "metabolic"
 )
@@ -31,7 +31,7 @@ app_compound_nodes <- c(
   "cpd:C01181",  # gamma-butyrobetaine
   "cpd:C00565",  # trimethylamine
   "cpd:C01104",  # trimethylamine N-oxide
-  "cpd:C00346"   # ethanolamine
+  "cpd:C00346"   # ethanolamine phosphate
 )
 
 ## Add manually curated FMO-associated TMA-to-TMAO reaction
@@ -44,7 +44,7 @@ app_fmo_reaction <- data.frame(
   stringsAsFactors = FALSE
 )
 
-app_fmo_edges <- MetaPathNet::MPN_customReaction(
+app_fmo_edges <- MetaPathNet::addCustomReaction(
   reaction_table = app_fmo_reaction,
   substrate_col  = "substrates",
   product_col    = "products",
@@ -53,13 +53,13 @@ app_fmo_edges <- MetaPathNet::MPN_customReaction(
 )
 
 ## Add complementary MetaCyc-derived reactions
-app_metacyc_edges <- MetaPathNet::MPN_mapReaction(
+app_metacyc_edges <- MetaPathNet::mapReaction(
   reaction_ids = c("RXN-12900", "RXN-13946"),
   source       = "metacyc"
 )
 
 ## Merge KEGG-derived network with external and custom reaction extensions
-app_network_extended <- MetaPathNet::MPN_mergeNetworks(
+app_network_extended <- MetaPathNet::combineNetworks(
   app_network_base,
   app_metacyc_edges,
   app_fmo_edges
